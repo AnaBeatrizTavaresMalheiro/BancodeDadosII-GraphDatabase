@@ -2,7 +2,7 @@
 
 Este projeto tem como objetivo migrar dados de um banco de dados relacional PostgreSQL para um banco de dados de grafos Neo4j, utilizando a linguagem Java. Além disso, o projeto implementa funcionalidades de busca e geração de relatórios complexos a partir dos dados armazenados no Neo4j, aproveitando a modelagem de grafos para fornecer consultas mais eficientes e contextuais.
 
----
+--
 
 ## Estrutura do Projeto
 
