@@ -65,7 +65,7 @@ Este projeto modela um banco de dados acadêmico que gerencia informações sobr
 1. Configure o banco de dados Neo4j e PostgreSQL conforme a estrutura do projeto.
 2. Clone o repositório: `git clone <url-do-repositório>`
 3. Acesse a pasta do projeto e rode o build com Gradle.
-4. Execute o arquivo `Main.java` para realizar a migração de dados e criar as relações no Neo4j.
+4. Execute o arquivo `Main.java` para realizar a migração de dados,criar as relações no Neo4j e verificar consultas.
 5. Utilize o painel do Neo4j ou consultar terminal da IDE utilizada.
 
 ## Autores
