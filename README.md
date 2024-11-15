@@ -17,7 +17,7 @@ Este projeto tem como objetivo migrar dados de um banco de dados relacional Post
 - Conectar ao banco de dados PostgreSQL e extrair dados das tabelas.
 - Modelar os dados extraídos em um formato orientado a grafos no Neo4j.
 - Criar nós e relações no Neo4j para representar entidades e interações acadêmicas.
-- Permitir consultas eficientes utilizando a linguagem **Cypher**.
+- Permitir consultas utilizando a linguagem **Cypher**.
 
 ## Tecnologias Utilizadas
 
