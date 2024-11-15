@@ -2,7 +2,7 @@
 
 Este projeto tem como objetivo migrar dados de um banco de dados relacional PostgreSQL para um banco de dados de grafos Neo4j, utilizando a linguagem Java. Além disso, o projeto implementa funcionalidades de busca e geração de relatórios complexos a partir dos dados armazenados no Neo4j, aproveitando a modelagem de grafos para fornecer consultas mais eficientes e contextuais.
 
---
+
 
 ## Estrutura do Projeto
 
@@ -12,8 +12,6 @@ Este projeto tem como objetivo migrar dados de um banco de dados relacional Post
 - **Neo4j**: Banco de dados de grafos de destino.
 - **Railway**: Servidor onde o banco de dados PostgreSQL está hospedado.
 
----
-
 ## Funcionalidades
 
 - Conectar ao banco de dados PostgreSQL e extrair dados das tabelas.
@@ -21,20 +19,14 @@ Este projeto tem como objetivo migrar dados de um banco de dados relacional Post
 - Criar nós e relações no Neo4j para representar entidades e interações acadêmicas.
 - Permitir consultas eficientes utilizando a linguagem **Cypher**.
 
----
-
 ## Tecnologias Utilizadas
 
 - **Neo4j Java Driver**: Para conexão e manipulação do banco de dados Neo4j.
 - **PostgreSQL JDBC Driver**: Para acessar e consultar o banco de dados PostgreSQL.
 
----
-
 ## Sobre o Banco de Dados
 
 Este projeto modela um banco de dados acadêmico que gerencia informações sobre alunos, professores, cursos, departamentos, disciplinas e a matriz curricular de uma instituição. Com a migração para Neo4j, o modelo de dados foi adaptado para capturar de maneira mais intuitiva as conexões e interações entre essas entidades.
-
----
 
 ## Estrutura de Grafos
 
@@ -59,8 +51,6 @@ Este projeto modela um banco de dados acadêmico que gerencia informações sobr
 - **ORIENTADO_POR**: Relaciona grupos aos professores orientadores de TCC, incluindo semestre, ano e nota final.
 - **EXPERIENCIA**: Relaciona professores a disciplinas em que possuem experiência, com datas de início e fim.
 
----
-
 ## Relatórios Possíveis
 
 1. **Histórico Escolar de Alunos**: Lista disciplinas cursadas, semestre, ano e nota final.
@@ -70,8 +60,6 @@ Este projeto modela um banco de dados acadêmico que gerencia informações sobr
 5. **Grupos de TCC e Orientadores**: Identifica grupos de TCC, integrantes e orientadores.
 6. **Pré-requisitos de Disciplinas** *(opcional)*: Explora dependências entre disciplinas.
 
----
-
 ## Instruções de Uso
 
 1. Configure o banco de dados Neo4j e PostgreSQL conforme a estrutura do projeto.
@@ -79,8 +67,6 @@ Este projeto modela um banco de dados acadêmico que gerencia informações sobr
 3. Acesse a pasta do projeto e rode o build com Gradle.
 4. Execute o arquivo `Main.java` para realizar a migração de dados e criar as relações no Neo4j.
 5. Utilize o painel do Neo4j ou scripts Cypher para explorar os dados e realizar consultas.
-
----
 
 ## Autores
 
