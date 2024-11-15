@@ -66,7 +66,7 @@ Este projeto modela um banco de dados acadêmico que gerencia informações sobr
 2. Acesse a pasta do projeto e rode o build com Gradle.
 3. Acesse a pasta src/main/java/mongodb/org/example/
 4. Acesse o arquivo 'Main.java'
-5. Acrescente as senhas fornecida via Moodle, através do arquivo Senhas.txt.
+5. Acrescente as senhas fornecida via Moodle.
    ![image](https://github.com/user-attachments/assets/913d86b3-6b66-42f8-8aad-71bd78338c89)
 7. Execute o arquivo `Main.java` para realizar a migração de dados,criar as relações no Neo4j e verificar consultas.
 8. Utilize o painel do Neo4j ou consultar terminal.
