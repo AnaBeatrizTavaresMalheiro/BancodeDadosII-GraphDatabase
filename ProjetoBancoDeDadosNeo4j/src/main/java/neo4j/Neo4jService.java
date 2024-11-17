@@ -2,6 +2,7 @@ package neo4j;
 
 import org.neo4j.driver.*;
 import org.neo4j.driver.Record;
+import org.neo4j.driver.types.Node;
 import tabelas.*;
 
 import java.util.*;
@@ -328,7 +329,6 @@ public class Neo4jService implements AutoCloseable {
                 for (Record record : lista_grupos) {
                     System.out.println("ID do Grupo: " + record.get("idGrupo"));
                     System.out.println("Orientador: " + record.get("orientador"));
-                    System.out.println("Título do Grupo de TCC: " + record.get("grupoTCC"));
 
                     // Usa um Set para garantir que os alunos não se repitam
                     List<String> alunos = new ArrayList<>(new HashSet<>(record.get("alunos").asList(Value::asString)));
@@ -339,6 +339,48 @@ public class Neo4jService implements AutoCloseable {
             }
         } catch (Exception e) {
             e.printStackTrace(); // Para capturar e exibir qualquer exceção que possa ocorrer
+        }
+    }
+
+    public void showAllData() {
+        // Iniciando uma sessão no banco
+        try (Session session = driver.session()) {
+            // Obtendo todos os labels dinamicamente
+            String getLabelsQuery = "CALL db.labels()";
+            Result labelsResult = session.run(getLabelsQuery);
+
+            // Iterando sobre os labels retornados
+            while (labelsResult.hasNext()) {
+                System.out.println("--------------------------------");
+                Record labelRecord = labelsResult.next();
+                String label = labelRecord.get("label").asString();
+                System.out.println("Label: " + label);
+
+                try {
+                    // Consultando todos os nós do label
+                    String query = String.format("MATCH (n:%s) RETURN n", label);
+                    Result nodesResult = session.run(query);
+
+                    // Verificando e exibindo os dados de cada nó
+                    if (nodesResult.hasNext()) {
+                        while (nodesResult.hasNext()) {
+                            Record nodeRecord = nodesResult.next();
+                            Node node = nodeRecord.get("n").asNode();
+                            for (String key : node.keys()) {
+                                System.out.println(key + ": " + node.get(key).asObject());
+                            }
+                            System.out.println(); // Linha em branco para separar os nós
+                        }
+                    } else {
+                        System.out.println("Nenhum dado encontrado para o label: " + label);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Erro ao mostrar dados do label " + label + ": " + e.getMessage());
+                }
+                System.out.println("--------------------------------");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao obter os labels: " + e.getMessage());
         }
     }
 

@@ -8,6 +8,7 @@ import org.neo4j.driver.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,12 +41,67 @@ public class Main {
             LOGGER.log(Level.INFO, "Conexões com PostgreSQL e Neo4j estabelecidas.");
             neo4jService.insertDataIntoDB();
 
-            neo4jService.getHistoricoEscolar("Luiz");
-            neo4jService.getDisciplinasMinistradasPorProfessor("Pedro");
-            neo4jService.getAlunosFormados(2003);
-            neo4jService.getProfessoresChefes();
-            neo4jService.getGruposDeTCC();
-            neo4jService.close();
+            neo4jService.showAllData();
+
+            Scanner scanner = new Scanner(System.in);
+
+            while (true) {
+                System.out.println("\nEscolha uma opção:");
+                System.out.println("0 - Mostrar todas as tabelas e dados");
+                System.out.println("1 - Buscar histórico escolar do aluno");
+                System.out.println("2 - Buscar histórico de disciplinas do professor");
+                System.out.println("3 - Listar alunos formados no ano");
+                System.out.println("4 - Listar chefes de departamentos");
+                System.out.println("5 - Listar alunos e orientadores de TCC");
+                System.out.println("6 - Sair");
+
+                System.out.print("Digite sua escolha: ");
+                int escolha = scanner.nextInt();
+                scanner.nextLine(); // Consumir a quebra de linha
+                System.out.println("----------------------------------------------------------------");
+                switch (escolha) {
+                    case 0:
+                        neo4jService.showAllData();
+                        break;
+                    case 1:
+                        System.out.print("Digite o nome do aluno: ");
+                        String nomeAluno = scanner.nextLine();
+                        neo4jService.getHistoricoEscolar(nomeAluno);
+                        break;
+
+                    case 2:
+                        System.out.print("Digite o nome do professor: ");
+                        String nomeProfessor = scanner.nextLine();
+                        neo4jService.getDisciplinasMinistradasPorProfessor(nomeProfessor);
+                        break;
+
+                    case 3:
+                        System.out.print("Digite o ano: ");
+                        int ano = scanner.nextInt();
+                        neo4jService.getAlunosFormados(ano);
+                        break;
+
+                    case 4:
+                        neo4jService.getProfessoresChefes();
+                        break;
+
+                    case 5:
+                        neo4jService.getGruposDeTCC();
+                        break;
+
+                    case 6:
+                        System.out.println("Encerrando o programa.");
+                        neo4jService.close();
+                        scanner.close();
+                        return;
+
+                    default:
+                        System.out.println("Opção inválida. Tente novamente.");
+                }
+                System.out.println("----------------------------------------------------------------");
+
+            }
+
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Erro ao conectar ao PostgreSQL.", e);
         } catch (Exception e) {
