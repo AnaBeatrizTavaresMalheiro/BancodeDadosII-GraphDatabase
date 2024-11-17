@@ -71,6 +71,10 @@ Este projeto modela um banco de dados acadêmico que gerencia informações sobr
 7. Execute o arquivo `Main.java` para realizar a migração de dados,criar as relações no Neo4j e verificar consultas.
 8. Utilize o painel do Neo4j ou consulte o terminal para interagir com o menu para fazer as querys e visualizar os dados.
 
+Menu Interativo através do terminal:<br>
+<img width="476" alt="image" src="https://github.com/user-attachments/assets/874702bb-711c-4488-a6ad-7ec8b96fff27">
+
+
 ## Autores
 
 | <img src="https://avatars.githubusercontent.com/u/84588132?v=4" alt="Ana Beatriz Tavares" width="150"/> | <img src="https://avatars.githubusercontent.com/u/103201200?v=4" alt="Bruno Andwele" width="150"/> |
