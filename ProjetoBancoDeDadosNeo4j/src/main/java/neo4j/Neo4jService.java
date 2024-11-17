@@ -162,20 +162,24 @@ public class Neo4jService implements AutoCloseable {
 
     private void insertGrupoAlunos(Transaction tx) {
         for (GrupoAluno ga : grupoAlunos) {
-            tx.run("MATCH (a:Aluno {idAluno: $idAluno}) " +
-                            "CREATE (g:Grupo {idGrupo: $idGrupo})-[:TEM_ALUNO]->(a)",
+            tx.run("MERGE (g:Grupo {idGrupo: $idGrupo}) " +
+                            "WITH g " +
+                            "MATCH (a:Aluno {idAluno: $idAluno}) " +
+                            "MERGE (g)-[:TEM_ALUNO]->(a)",
                     Values.parameters("idAluno", ga.getIdAluno(), "idGrupo", ga.getIdGrupo()));
         }
     }
 
+
     private void insertHistoricoTCC(Transaction tx) {
         for (HistoricoTCC ht : historicoTCC) {
-            tx.run("MATCH (g:Grupo {idGrupo: $idGrupo}), (p:Professor {idProfessor: $idProfessor}) " +
-                            "MERGE (g)-[:ORIENTADO_POR {semestre: $semestre, ano: $ano, nota: $nota}]->(p)",
-                    Values.parameters("idGrupo", ht.getIdGrupoAluno(), "idProfessor", ht.getIdProfessor(),
-                            "semestre", ht.getSemestre(), "ano", ht.getAno(), "nota", ht.getNota()));
+            tx.run("MATCH (p:Professor {idProfessor: $idProfessor}) " +
+                            "MERGE (g:Grupo {idGrupo: $idGrupo}) " +
+                            "MERGE (g)-[:ORIENTADO_POR]->(p)",
+                    Values.parameters("idProfessor", ht.getIdProfessor(), "idGrupo", ht.getIdGrupoAluno()));
         }
     }
+
 
     private void insertHistoricoProfessores(Transaction tx) {
         for (HistoricoProfessor hp : historicoProfessores) {
