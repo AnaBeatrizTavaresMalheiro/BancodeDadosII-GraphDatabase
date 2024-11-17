@@ -17,9 +17,9 @@ public class Main {
 
     private static final String URL = "jdbc:postgresql://autorack.proxy.rlwy.net:57661/railway";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "BvzKsFbCslzRtGiWrrelANloUarxsVCZ";
+    private static final String PASSWORD = "";
     private static final String URI_NEO4J = "neo4j+s://73736f2a.databases.neo4j.io:7687";
-    private static final String PASSWORD_NEO4J = "zDcVjk7EhH8kxjaPPKPI-hqyorrSKON1ILwMszPPer8";
+    private static final String PASSWORD_NEO4J = "";
     private static final String USER_NEO4J = "neo4j";
 
     public static void main(String[] args) {
