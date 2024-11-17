@@ -168,6 +168,7 @@ public class Neo4jService implements AutoCloseable {
         }
     }
 
+
     private void insertHistoricoTCC(Transaction tx) {
         for (HistoricoTCC ht : historicoTCC) {
             tx.run("MATCH (g:Grupo {idGrupoAluno: $idGrupoAluno}), (p:Professor {idProfessor: $idProfessor}) " +
@@ -176,6 +177,7 @@ public class Neo4jService implements AutoCloseable {
                             "semestre", ht.getSemestre(), "ano", ht.getAno(), "nota", ht.getNota()));
         }
     }
+
 
     private void insertHistoricoProfessores(Transaction tx) {
         for (HistoricoProfessor hp : historicoProfessores) {
